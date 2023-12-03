@@ -1,0 +1,17 @@
+{
+    "type": "record",
+    "namespace": "com.saneetbhella.schemas",
+    "name": "Payment",
+    "fields": [
+        {
+            "name": "id",
+            "type": "string",
+            "comment": "UUID of payment"
+        },
+        {
+            "name": "description",
+            "type": "string",
+            "comment": "Payment description"
+        }
+    ]
+}
