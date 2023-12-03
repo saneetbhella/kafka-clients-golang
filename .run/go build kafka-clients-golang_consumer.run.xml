@@ -1,5 +1,5 @@
 <component name="ProjectRunConfigurationManager">
-  <configuration default="false" name="go build kafka-clients-golang/producer" type="GoApplicationRunConfiguration" factoryName="Go Application" nameIsGenerated="true">
+  <configuration default="false" name="go build kafka-clients-golang/consumer" type="GoApplicationRunConfiguration" factoryName="Go Application" nameIsGenerated="true">
     <module name="kafka-clients-golang" />
     <working_directory value="$PROJECT_DIR$" />
     <EXTENSION ID="net.ashald.envfile">
@@ -14,9 +14,9 @@
       </ENTRIES>
     </EXTENSION>
     <kind value="PACKAGE" />
-    <package value="kafka-clients-golang/producer" />
+    <package value="kafka-clients-golang/consumer" />
     <directory value="$PROJECT_DIR$" />
-    <filePath value="$PROJECT_DIR$/producer/main.go" />
+    <filePath value="$PROJECT_DIR$/consumer/main.go" />
     <method v="2" />
   </configuration>
 </component>
