@@ -8,18 +8,18 @@ import (
 )
 
 type kafkaClient struct {
-	client   *kafka.Consumer
+	client   *kafka.Producer
 	registry schemaregistry.Client
 }
 
 type Client interface {
-	GetKafkaConsumer() *kafka.Consumer
+	GetKafkaProducer() *kafka.Producer
 	GetSchemaRegistry() schemaregistry.Client
-	NewDeserializer() (*avro.SpecificDeserializer, error)
+	NewSerializer() (*avro.SpecificSerializer, error)
 }
 
 func New(kafkaConfig kafka.ConfigMap) (Client, error) {
-	client, err := kafka.NewConsumer(&kafkaConfig)
+	client, err := kafka.NewProducer(&kafkaConfig)
 	if err != nil {
 		return nil, err
 	}
@@ -35,7 +35,7 @@ func New(kafkaConfig kafka.ConfigMap) (Client, error) {
 	}, nil
 }
 
-func (c *kafkaClient) GetKafkaConsumer() *kafka.Consumer {
+func (c *kafkaClient) GetKafkaProducer() *kafka.Producer {
 	return c.client
 }
 
@@ -43,8 +43,8 @@ func (c *kafkaClient) GetSchemaRegistry() schemaregistry.Client {
 	return c.registry
 }
 
-func (c *kafkaClient) NewDeserializer() (*avro.SpecificDeserializer, error) {
-	d, err := avro.NewSpecificDeserializer(c.registry, serde.ValueSerde, avro.NewDeserializerConfig())
+func (c *kafkaClient) NewSerializer() (*avro.SpecificSerializer, error) {
+	d, err := avro.NewSpecificSerializer(c.registry, serde.ValueSerde, avro.NewSerializerConfig())
 	if err != nil {
 		return nil, err
 	}
