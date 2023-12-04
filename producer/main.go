@@ -31,6 +31,7 @@ func main() {
 	}
 
 	kafkaProducer := c.GetKafkaProducer()
+	defer kafkaProducer.Close()
 
 	serializer, err := c.NewSerializer()
 	if err != nil {
@@ -46,7 +47,6 @@ func main() {
 	}
 
 	kafkaProducer.Flush(100)
-	kafkaProducer.Close()
 
 	logger.Info("Produced messages")
 }

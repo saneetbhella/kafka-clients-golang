@@ -1,5 +1,8 @@
 # Kafka Clients Golang
 
+This repository contains a basic Kafka Consumer & Producer written in Golang using the Confluent Kafka library. This can
+be used with [Kafka Docker](https://github.com/saneetbhella/kafka-docker).
+
 ## Generating models from Avro schema
 
 Install Avro tool globally:
@@ -14,20 +17,28 @@ Run command to generate model from Avro file:
 gogen-avro -package model ./model ./avsc/payment.avsc
 ```
 
-## Kafka Consumer
-
-### Building
-
-To build the consumer:
+## Install Dependencies
 
 ```bash
-
+go get ./...
 ```
 
-### Running
-
-To run the consumer:
+## Build
 
 ```bash
-go run consumer/consumer.go
+go build ./...
+```
+
+## Running
+
+### Kafka Consumer
+
+```bash
+go run consumer/main.go
+```
+
+### Kafka Consumer
+
+```bash
+go run producer/main.go
 ```
